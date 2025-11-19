@@ -147,6 +147,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- FUNCIONALIDADE DE ÁUDIO ---
+    const logoElement = document.getElementById('logo-img');
+    const audio = document.getElementById('background-audio');
+    
+    // Adiciona o event listener na logo
+    if (logoElement && audio) {
+        logoElement.style.cursor = 'pointer'; // Indica que é clicável
+        
+        // Variável para rastrear o estado de reprodução
+        let isPlaying = false; 
+
+        logoElement.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                console.log('Música Pausada.');
+            } else {
+                // Tenta iniciar a reprodução. Navegadores modernos só permitem após interação.
+                audio.play().then(() => {
+                    console.log('Música Iniciada.');
+                }).catch(error => {
+                    // Trata o erro caso o navegador ainda impeça a reprodução
+                    console.error('Falha ao iniciar áudio:', error);
+                });
+            }
+            isPlaying = !isPlaying; // Inverte o estado
+        });
+    }
+
     // --- Inicialização ---
     renderLocais(); 
 });

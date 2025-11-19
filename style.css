@@ -10,7 +10,7 @@
     --font-primary: 'Roboto Mono', monospace;
     --spacing-large: 4rem;
     --spacing-medium: 2rem;
-    --carousel-item-count: 7; /* Total de imagens no carrossel */
+    --carousel-item-count: 5; /* ATUALIZADO: Total de imagens no carrossel agora é 5 */
     --vertical-height: 500px; /* Altura da 'janela' do carrossel no desktop */
 }
 
@@ -153,8 +153,9 @@ h2 {
 }
 
 .carousel-wrapper {
+    /* O wrapper precisa ser alto o suficiente para conter todos os itens */
     height: calc(var(--vertical-height) * var(--carousel-item-count)); 
-    animation: scroll-carousel-vertical 35s linear infinite; 
+    animation: scroll-carousel-vertical 25s linear infinite; /* Tempo ajustado para 5 itens */
 }
 
 .carousel-item {
@@ -177,6 +178,7 @@ h2 {
         transform: translateY(0);
     }
     100% {
+        /* Move o carrossel para cima pela altura total de 4 itens (5 - 1) */
         transform: translateY(calc(-1 * var(--vertical-height) * (var(--carousel-item-count) - 1)));
     }
 }
